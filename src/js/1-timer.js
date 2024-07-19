@@ -1,5 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 let userSelectedDate = null;
 let countdownInterval = null;
@@ -29,7 +31,10 @@ flatpickr('#datetime-picker', options);
 // Функція валідації обраної дати
 function validateSelectedDate(selectedDate) {
   if (selectedDate <= new Date()) {
-    window.alert('Please choose a date in the future');
+    iziToast.error({
+      title: 'Error',
+      message: 'Please choose a date in the future',
+    });
     startBtn.disabled = true;
   } else {
     userSelectedDate = selectedDate;
@@ -57,7 +62,10 @@ function startCountdown(targetDate) {
       updateTimerDisplay(0, 0, 0, 0);
       datetimePicker.disabled = false;
       startBtn.disabled = true;
-      window.alert('Time is up!');
+      iziToast.info({
+        title: 'Information',
+        message: 'Time is up!!',
+      });
       return;
     }
 
@@ -68,10 +76,15 @@ function startCountdown(targetDate) {
 
 // Функція оновлення інтерфейсу таймера
 function updateTimerDisplay(days, hours, minutes, seconds) {
-  daysSpan.textContent = String(days).padStart(2, '0');
-  hoursSpan.textContent = String(hours).padStart(2, '0');
-  minutesSpan.textContent = String(minutes).padStart(2, '0');
-  secondsSpan.textContent = String(seconds).padStart(2, '0');
+  daysSpan.textContent = addLeadingZero(days);
+  hoursSpan.textContent = addLeadingZero(hours);
+  minutesSpan.textContent = addLeadingZero(minutes);
+  secondsSpan.textContent = addLeadingZero(seconds);
+}
+
+// Функція додавання ведучого нуля
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
 }
 
 // Функція підрахунку значень
