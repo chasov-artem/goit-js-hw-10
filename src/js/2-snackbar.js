@@ -19,7 +19,8 @@ form.addEventListener('submit', event => {
         title: '',
         message: `✅ Fulfilled promise in ${message}ms`,
         position: 'topRight',
-        iconUrl: '../img/icons.svg#icon-bi_check2-circle',
+        icon: '',
+        iconUrl: '',
       });
     })
     .catch(message => {
@@ -28,7 +29,7 @@ form.addEventListener('submit', event => {
         message: `❌ Rejected promise in ${message}ms`,
         position: 'topRight',
         icon: '',
-        iconUrl: '../img/icons.svg#icon-bi_x-octagon',
+        iconUrl: ``,
       });
     });
 
