@@ -34,6 +34,7 @@ function validateSelectedDate(selectedDate) {
     iziToast.error({
       title: 'Error',
       message: 'Please choose a date in the future',
+      position: 'topRight',
     });
     startBtn.disabled = true;
   } else {
