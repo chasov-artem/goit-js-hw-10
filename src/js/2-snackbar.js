@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import pathSprite from '../img/icons.svg';
 
 const form = document.querySelector('.form');
 const delayInput = form.querySelector('input[name="delay"]');
@@ -18,6 +19,8 @@ form.addEventListener('submit', event => {
         title: '',
         message: `✅ Fulfilled promise in ${message}ms`,
         position: 'topRight',
+        icon: '',
+        iconUrl: `${pathSprite}#icon-bi_check2-circle`,
       });
     })
     .catch(message => {
@@ -25,6 +28,8 @@ form.addEventListener('submit', event => {
         title: '',
         message: `❌ Rejected promise in ${message}ms`,
         position: 'topRight',
+        icon: '',
+        iconUrl: `${pathSprite}#icon-bi_x-octagon`,
       });
     });
 
